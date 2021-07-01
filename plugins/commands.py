@@ -81,7 +81,6 @@ buttons=InlineKeyboardMarkup(
 async def start(client, cmd):
   await cmd.reply(
     HOME_TEXT.format(cmd.from_user.first_name, cmd.from_user.id),
-    parse_mode="Markdown",
     quote=True,
     disable_web_page_preview=True,
     reply_markup=InlineKeyboardMarkup(

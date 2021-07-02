@@ -16,7 +16,7 @@
 from pyrogram import Client
 from pyrogram.types import CallbackQuery
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
+import os
 HELP=""" You can ask any file by using <code>/pdf keyword </code>
 
 
@@ -64,7 +64,7 @@ Tip- To get MTP of all subjects in Group 1 = <code>/pdf mtpgrp1</code>
 Note: All the above are examples , Similarly you can combine keywords as you wish, like rtpgrp1, mtpgrp2, sagrp1, mtp, rtp, sa, rtpacc, mtpacc, salaw2021, etc..
             
 """
-store = -1001154905882
+store = int(os.environ.get("DB", ""))
 reply_markup=InlineKeyboardMarkup(
     [
         [
@@ -79,7 +79,7 @@ reply_markup=InlineKeyboardMarkup(
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.from_user.id != query.message.reply_to_message.from_user.id:
         await query.answer(
-            "നീയൊക്കെ ഒരു Professional Student ആണോ?😏.ഇത് നിനക്ക് വേണ്ടി അയച്ച Reply അല്ലല്ലോ!😐. പിന്നെന്തിനാ ഇതിൽ കേറി ഞെക്കിത്🤖\nതൽക്കാലം കുറച്ച് കഞ്ഞി എടുക്കട്ടെ😂",
+            "നീയൊക്കെ ഒരു Professional Student ആണോ?😏.ഇത് നിനക്ക് വേണ്ടി അയച്ച Reply അല്ലല്ലോ!😐. പിന്നെന്തിനാ ഇതിൽ കേറി ഞെക്കിത്🤖\nനിനക്കൊക്കെ ഒന്ന് Professional ആയിക്കൂടെ😔",
             show_alert=True
             )
         return
@@ -99,6 +99,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="mtpgrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -119,7 +122,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="mtpcost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="mtptax")
+                    InlineKeyboardButton(text="Taxation", callback_data="mtptax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "mtp")
                 ]
                 ]
             ),
@@ -139,8 +145,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="mtpeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="mtpfm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="mtpfm"),
                 ],
+                [
+                    InlineKeyboardButton("◀️Back", "mtp")
+                ]
                 ]
             ),
         )
@@ -158,7 +167,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtpacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
@@ -177,7 +189,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtplaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtplawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtplawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
@@ -196,7 +211,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtpcost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpcostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpcostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
@@ -215,7 +233,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtptax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtptaxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtptaxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
@@ -234,7 +255,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtpadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
@@ -254,6 +278,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     ],
                     [
                         InlineKeyboardButton(text="OLDER", callback_data="mtpauditold")
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
@@ -272,7 +299,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtpeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
@@ -291,7 +321,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="mtpfm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpfmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpfmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
@@ -305,6 +338,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -318,6 +354,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -331,6 +370,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -344,6 +386,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -361,6 +406,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -374,6 +422,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -387,6 +438,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -400,6 +454,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -416,6 +473,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -429,6 +489,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -442,6 +505,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -455,6 +521,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -471,6 +540,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -484,6 +556,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -497,6 +572,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -510,6 +588,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -526,6 +607,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -539,6 +623,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -552,6 +639,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -565,6 +655,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -580,6 +673,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -593,6 +689,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -606,6 +705,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -619,6 +721,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -634,6 +739,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -647,6 +755,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -660,6 +771,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -673,6 +787,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -689,6 +806,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -702,6 +822,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -715,6 +838,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -728,6 +854,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -748,6 +877,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="rtpgrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -768,7 +900,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="rtpcost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="rtptax")
+                    InlineKeyboardButton(text="Taxation", callback_data="rtptax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "rtp")
                 ]
                 ]
             ),
@@ -788,7 +923,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="rtpeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="rtpfm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="rtpfm"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "rtp")
                 ]
                 ]
             ),
@@ -807,7 +945,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
@@ -826,7 +967,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtplaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtplawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtplawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
@@ -845,7 +989,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpcost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpcostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpcostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
@@ -864,7 +1011,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtptax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtptaxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtptaxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
@@ -883,7 +1033,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
@@ -902,7 +1055,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpaudit2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpauditold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpauditold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
@@ -921,7 +1077,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
@@ -940,7 +1099,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="rtpfm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpfmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpfmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
@@ -954,6 +1116,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -967,6 +1132,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -980,6 +1148,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -993,6 +1164,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -1010,6 +1184,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1023,6 +1200,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1036,6 +1216,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1049,6 +1232,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1065,6 +1251,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1078,6 +1267,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1091,6 +1283,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1104,6 +1299,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1120,6 +1318,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1133,6 +1334,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1146,6 +1350,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1159,6 +1366,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1175,6 +1385,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1188,6 +1401,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1201,6 +1417,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1214,6 +1433,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1229,6 +1451,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1242,6 +1467,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1255,6 +1483,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1268,6 +1499,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1283,6 +1517,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1296,6 +1533,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1309,6 +1549,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1322,6 +1565,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1338,6 +1584,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1351,6 +1600,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1364,6 +1616,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1377,6 +1632,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1397,6 +1655,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="sagrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -1417,7 +1678,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="sacost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="satax")
+                    InlineKeyboardButton(text="Taxation", callback_data="satax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "sa")
                 ]
                 ]
             ),
@@ -1437,7 +1701,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="saeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="safm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="safm"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "sa")
                 ]
                 ]
             ),
@@ -1456,7 +1723,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="saacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
@@ -1475,7 +1745,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="salaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="salawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="salawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
@@ -1494,7 +1767,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="sacost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="sacostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="sacostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
@@ -1513,7 +1789,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="satax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="sataxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="sataxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
@@ -1532,7 +1811,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="saadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
@@ -1551,7 +1833,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="saaudit2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saauditold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saauditold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
@@ -1570,7 +1855,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="saeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
@@ -1589,7 +1877,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton(text="2021", callback_data="safm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="safmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="safmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
@@ -1603,6 +1894,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1616,6 +1910,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1629,6 +1926,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1642,6 +1942,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1659,6 +1962,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1672,6 +1978,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1685,6 +1994,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1698,13 +2010,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
             ),
         )
     elif query.data =="salawold":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=4)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=125)
 
     elif query.data =="sacost2018":
         await query.message.edit(
@@ -1714,6 +2029,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1727,6 +2045,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1740,6 +2061,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1753,6 +2077,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1769,6 +2096,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1782,6 +2112,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1795,6 +2128,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1808,13 +2144,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
             ),
         )
     elif query.data =="sataxold":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=6)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=187)
 
     elif query.data =="saadvacc2018":
         await query.message.edit(
@@ -1824,6 +2163,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1837,6 +2179,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1850,6 +2195,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1863,13 +2211,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
             ),
         )
     elif query.data =="saadvaccold":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=7)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=203)
     elif query.data =="saaudit2018":
         await query.message.edit(
             "**SELECT THE EXAM**",
@@ -1878,6 +2229,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1891,6 +2245,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1904,6 +2261,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1917,6 +2277,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1932,6 +2295,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -1945,6 +2311,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -1958,6 +2327,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -1971,6 +2343,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -1987,6 +2362,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2000,6 +2378,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2013,6 +2394,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2026,6 +2410,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2719,5 +3106,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data =="mtpfm2021nov":
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+    elif query.data == "mainmenu":
+        await query.message.edit(
+            text="Tell Me What You Want",
+            reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                InlineKeyboardButton("RTP", callback_data="rtp"),
+                InlineKeyboardButton("MTP", callback_data="mtp")
+                ],
+                [
+                InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
+                ]
+            ]
+            )
+        )
 
 

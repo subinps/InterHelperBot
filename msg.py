@@ -13,8 +13,8 @@
 #   limitations under the License.
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-store = -1001154905882
+import os
+store = int(os.environ.get("DB", ""))
 reply_markup=InlineKeyboardMarkup(
     [
         [
@@ -29,8 +29,8 @@ reply_markup=InlineKeyboardMarkup(
 async def message_handler(client, message, text):
     if text == "mtp":
         await message.reply_text(
+            "**SELECT THE GROUP**ㅤㅤㅤㅤ",
             quote=True,
-            text="**SELECT THE GROUP**ㅤㅤㅤㅤ",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -40,6 +40,9 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="mtpgrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -47,8 +50,8 @@ async def message_handler(client, message, text):
         )
     elif text == "mtpgrp1":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below**",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -61,15 +64,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="mtpcost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="mtptax")
+                    InlineKeyboardButton(text="Taxation", callback_data="mtptax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "mtp")
                 ]
                 ]
             ),
         )
     elif text == "mtpgrp2":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below** ",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -82,15 +88,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="mtpeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="mtpfm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="mtpfm"),
                 ],
+                [
+                    InlineKeyboardButton("◀️Back", "mtp")
+                ]
                 ]
             ),
         )
     elif text =="mtpacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -102,15 +111,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtpacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="mtplaw":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -122,15 +134,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtplaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtplawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtplawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="mtpcost":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -142,15 +157,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtpcost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpcostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpcostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="mtptax":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -162,15 +180,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtptax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtptaxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtptaxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="mtpadvacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -182,15 +203,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtpadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="mtpaudit":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -203,14 +227,17 @@ async def message_handler(client, message, text):
                     ],
                     [
                         InlineKeyboardButton(text="OLDER", callback_data="mtpauditold")
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="mtpeis":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -222,15 +249,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtpeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="mtpfm":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -242,7 +272,10 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="mtpfm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="mtpfmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="mtpfmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpgrp2")
                     ]
                 ]
             ),
@@ -250,13 +283,16 @@ async def message_handler(client, message, text):
 
     elif text =="mtpacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -264,13 +300,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -278,13 +317,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -292,13 +334,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpacc")
                     ]
                     
                 ]
@@ -310,13 +355,16 @@ async def message_handler(client, message, text):
    
     elif text =="mtplaw2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -324,13 +372,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtplaw2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -338,13 +389,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtplaw2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -352,13 +406,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtplaw2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtplaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtplaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtplaw")
                     ]
                     
                 ]
@@ -369,13 +426,16 @@ async def message_handler(client, message, text):
 
     elif text =="mtpcost2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -383,13 +443,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpcost2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -397,13 +460,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpcost2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -411,13 +477,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpcost2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpcost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpcost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpcost")
                     ]
                     
                 ]
@@ -428,13 +497,16 @@ async def message_handler(client, message, text):
     
     elif text =="mtptax2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -442,13 +514,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtptax2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -456,13 +531,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtptax2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -470,13 +548,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtptax2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtptax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtptax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtptax")
                     ]
                     
                 ]
@@ -487,13 +568,16 @@ async def message_handler(client, message, text):
 
     elif text =="mtpadvacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -501,13 +585,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpadvacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -515,13 +602,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpadvacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -529,13 +619,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpadvacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpadvacc")
                     ]
                     
                 ]
@@ -545,13 +638,16 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=47)
     elif text =="mtpaudit2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -559,13 +655,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpaudit2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -573,13 +672,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpaudit2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -587,13 +689,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpaudit2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpaudit")
                     ]
                     
                 ]
@@ -603,13 +708,16 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=47)
     elif text =="mtpeis2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -617,13 +725,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpeis2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -631,13 +742,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpeis2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -645,13 +759,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpeis2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpeis")
                     ]
                     
                 ]
@@ -662,13 +779,16 @@ async def message_handler(client, message, text):
 
     elif text =="mtpfm2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -676,13 +796,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpfm2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -690,13 +813,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpfm2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -704,13 +830,16 @@ async def message_handler(client, message, text):
         )
     elif text =="mtpfm2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="mtpfm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="mtpfm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mtpfm")
                     ]
                     
                 ]
@@ -721,8 +850,8 @@ async def message_handler(client, message, text):
 
     elif text == "rtp":
         await message.reply_text(
+            "**SELECT THE GROUP**ㅤㅤㅤㅤ",
             quote=True,
-            text="**SELECT THE GROUP**ㅤㅤㅤㅤ",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -732,6 +861,9 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="rtpgrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -739,8 +871,8 @@ async def message_handler(client, message, text):
         )
     elif text == "rtpgrp1":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below**",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -753,15 +885,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="rtpcost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="rtptax")
+                    InlineKeyboardButton(text="Taxation", callback_data="rtptax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "rtp")
                 ]
                 ]
             ),
         )
     elif text == "rtpgrp2":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below**",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -774,15 +909,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="rtpeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="rtpfm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="rtpfm"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "rtp")
                 ]
                 ]
             ),
         )
     elif text =="rtpacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -794,15 +932,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="rtplaw":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -814,15 +955,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtplaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtplawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtplawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="rtpcost":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -834,15 +978,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpcost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpcostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpcostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="rtptax":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -854,15 +1001,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtptax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtptaxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtptaxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp1")
                     ]
                 ]
             ),
         )
     elif text =="rtpadvacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -874,15 +1024,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="rtpaudit":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -894,15 +1047,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpaudit2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpauditold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpauditold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="rtpeis":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -914,15 +1070,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
         )
     elif text =="rtpfm":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -934,7 +1093,10 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="rtpfm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="rtpfmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="rtpfmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpgrp2")
                     ]
                 ]
             ),
@@ -942,13 +1104,16 @@ async def message_handler(client, message, text):
 
     elif text =="rtpacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -956,13 +1121,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -970,13 +1138,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -984,13 +1155,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpacc")
                     ]
                     
                 ]
@@ -1002,13 +1176,16 @@ async def message_handler(client, message, text):
    
     elif text =="rtplaw2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1016,13 +1193,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtplaw2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1030,13 +1210,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtplaw2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1044,13 +1227,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtplaw2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtplaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtplaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtplaw")
                     ]
                     
                 ]
@@ -1061,13 +1247,16 @@ async def message_handler(client, message, text):
 
     elif text =="rtpcost2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1075,13 +1264,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpcost2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1089,13 +1281,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpcost2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1103,13 +1298,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpcost2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpcost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpcost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpcost")
                     ]
                     
                 ]
@@ -1120,13 +1318,16 @@ async def message_handler(client, message, text):
     
     elif text =="rtptax2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1134,13 +1335,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtptax2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1148,13 +1352,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtptax2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1162,13 +1369,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtptax2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtptax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtptax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtptax")
                     ]
                     
                 ]
@@ -1179,13 +1389,16 @@ async def message_handler(client, message, text):
 
     elif text =="rtpadvacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1193,13 +1406,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpadvacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1207,13 +1423,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpadvacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1221,13 +1440,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpadvacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpadvacc")
                     ]
                     
                 ]
@@ -1237,13 +1459,16 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=7)
     elif text =="rtpaudit2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1251,13 +1476,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpaudit2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1265,13 +1493,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpaudit2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1279,13 +1510,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpaudit2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpaudit")
                     ]
                     
                 ]
@@ -1295,13 +1529,16 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=83)
     elif text =="rtpeis2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1309,13 +1546,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpeis2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1323,13 +1563,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpeis2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1337,13 +1580,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpeis2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpeis")
                     ]
                     
                 ]
@@ -1354,13 +1600,16 @@ async def message_handler(client, message, text):
 
     elif text =="rtpfm2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1368,13 +1617,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpfm2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1382,13 +1634,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpfm2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1396,13 +1651,16 @@ async def message_handler(client, message, text):
         )
     elif text =="rtpfm2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="rtpfm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="rtpfm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "rtpfm")
                     ]
                     
                 ]
@@ -1413,8 +1671,8 @@ async def message_handler(client, message, text):
 
     elif text == "sa":
         await message.reply_text(
+            "**SELECT THE GROUP**ㅤㅤㅤㅤ",
             quote=True,
-            text="**SELECT THE GROUP**ㅤㅤㅤㅤ",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1424,6 +1682,9 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(
                             text="Group-II", callback_data="sagrp2"
                         ),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "mainmenu")
                     ]
                     
                 ]
@@ -1431,8 +1692,8 @@ async def message_handler(client, message, text):
         )
     elif text == "sagrp1":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below**",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -1445,15 +1706,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="Cost and Management Accounting", callback_data="sacost"),
                 ],
                 [
-                    InlineKeyboardButton(text="Taxation", callback_data="satax")
+                    InlineKeyboardButton(text="Taxation", callback_data="satax"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "sa")
                 ]
                 ]
             ),
         )
     elif text == "sagrp2":
         await message.reply_text(
+            "**Select the Subject From Below**",
             quote=True,
-            text="**Select the Subject From Below**",
             reply_markup=InlineKeyboardMarkup(
                 [
                 [
@@ -1466,15 +1730,18 @@ async def message_handler(client, message, text):
                     InlineKeyboardButton(text="EIS & Strategic Management", callback_data="saeis"),
                 ],
                 [
-                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="safm")
+                    InlineKeyboardButton(text="FM & Economics for Finance", callback_data="safm"),
+                ],
+                [
+                    InlineKeyboardButton("◀️Back", "sa")
                 ]
                 ]
             ),
         )
     elif text =="saacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1486,15 +1753,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="saacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
         )
     elif text =="salaw":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1506,15 +1776,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="salaw2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="salawold")
+                        InlineKeyboardButton(text="OLDER", callback_data="salawold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
         )
     elif text =="sacost":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1526,15 +1799,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="sacost2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="sacostold")
+                        InlineKeyboardButton(text="OLDER", callback_data="sacostold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
         )
     elif text =="satax":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1546,15 +1822,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="satax2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="sataxold")
+                        InlineKeyboardButton(text="OLDER", callback_data="sataxold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp1")
                     ]
                 ]
             ),
         )
     elif text =="saadvacc":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1566,15 +1845,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="saadvacc2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saadvaccold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saadvaccold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
         )
     elif text =="saaudit":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1586,15 +1868,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="saaudit2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saauditold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saauditold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
         )
     elif text =="saeis":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1606,15 +1891,18 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="saeis2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="saeisold")
+                        InlineKeyboardButton(text="OLDER", callback_data="saeisold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
         )
     elif text =="safm":
         await message.reply_text(
+            "**SELECT THE YEAR**",
             quote=True,
-            text="**SELECT THE YEAR**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -1626,7 +1914,10 @@ async def message_handler(client, message, text):
                         InlineKeyboardButton(text="2021", callback_data="safm2021"),
                     ],
                     [
-                        InlineKeyboardButton(text="OLDER", callback_data="safmold")
+                        InlineKeyboardButton(text="OLDER", callback_data="safmold"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sagrp2")
                     ]
                 ]
             ),
@@ -1634,13 +1925,16 @@ async def message_handler(client, message, text):
 
     elif text =="saacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1648,13 +1942,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1662,13 +1959,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1676,13 +1976,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saacc")
                     ]
                     
                 ]
@@ -1694,13 +1997,16 @@ async def message_handler(client, message, text):
    
     elif text =="salaw2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1708,13 +2014,16 @@ async def message_handler(client, message, text):
         )
     elif text =="salaw2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1722,13 +2031,16 @@ async def message_handler(client, message, text):
         )
     elif text =="salaw2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
@@ -1736,30 +2048,36 @@ async def message_handler(client, message, text):
         )
     elif text =="salaw2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="salaw2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="salaw2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "salaw")
                     ]
                     
                 ]
             ),
         )
     elif text =="salawold":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=4)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=125)
 
     elif text =="sacost2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1767,13 +2085,16 @@ async def message_handler(client, message, text):
         )
     elif text =="sacost2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1781,13 +2102,16 @@ async def message_handler(client, message, text):
         )
     elif text =="sacost2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1795,13 +2119,16 @@ async def message_handler(client, message, text):
         )
     elif text =="sacost2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="sacost2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="sacost2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "sacost")
                     ]
                     
                 ]
@@ -1812,13 +2139,16 @@ async def message_handler(client, message, text):
     
     elif text =="satax2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1826,13 +2156,16 @@ async def message_handler(client, message, text):
         )
     elif text =="satax2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1840,13 +2173,16 @@ async def message_handler(client, message, text):
         )
     elif text =="satax2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
@@ -1854,30 +2190,36 @@ async def message_handler(client, message, text):
         )
     elif text =="satax2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="satax2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="satax2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "satax")
                     ]
                     
                 ]
             ),
         )
     elif text =="sataxold":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=6)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=187)
 
     elif text =="saadvacc2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1885,13 +2227,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saadvacc2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1899,13 +2244,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saadvacc2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
@@ -1913,29 +2261,35 @@ async def message_handler(client, message, text):
         )
     elif text =="saadvacc2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saadvacc2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saadvacc2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saadvacc")
                     ]
                     
                 ]
             ),
         )
     elif text =="saadvaccold":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=7)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=203)
     elif text =="saaudit2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1943,13 +2297,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saaudit2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1957,13 +2314,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saaudit2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1971,13 +2331,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saaudit2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saaudit2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saaudit2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saaudit")
                     ]
                     
                 ]
@@ -1987,13 +2350,16 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=82)
     elif text =="saeis2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -2001,13 +2367,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saeis2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -2015,13 +2384,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saeis2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -2029,13 +2401,16 @@ async def message_handler(client, message, text):
         )
     elif text =="saeis2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="saeis2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="saeis2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "saeis")
                     ]
                     
                 ]
@@ -2046,13 +2421,16 @@ async def message_handler(client, message, text):
 
     elif text =="safm2018":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2018may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2018nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2060,13 +2438,16 @@ async def message_handler(client, message, text):
         )
     elif text =="safm2019":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2019may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2019nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2074,13 +2455,16 @@ async def message_handler(client, message, text):
         )
     elif text =="safm2020":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2020may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2020nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2088,13 +2472,16 @@ async def message_handler(client, message, text):
         )
     elif text =="safm2021":
         await message.reply_text(
+            "**SELECT THE EXAM**",
             quote=True,
-            text="**SELECT THE EXAM**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(text="MAY", callback_data="safm2021may"),
                         InlineKeyboardButton(text="NOVEMBER", callback_data="safm2021nov"),
+                    ],
+                    [
+                        InlineKeyboardButton("◀️Back", "safm")
                     ]
                     
                 ]
@@ -2102,8 +2489,6 @@ async def message_handler(client, message, text):
         )
     elif text =="safmold":
         await client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, text="Not available!!")
-    
-    
 #DATABASE
 ##ACCOUNTS
     elif text =="saacc2018may":
@@ -2789,46 +3174,21 @@ async def message_handler(client, message, text):
     elif text =="mtpfm2021nov":
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
     else:
-        await message.reply_text(
-            """Use proper syntax for requesting.
-You have to use proper keywords to get the desired files.
-
-<b>Available Files</b>
-RTP(Keyword- rtp)
-MTP(Keyword- mtp)
-Suggested Answers(Keyword- sa)
-
-<b>Available Subjects</b>
-Accounts(Keyword - acc)
-Business Laws, Ethics and Communication(Keyword- law)
-Cost Accounting and Financial Management(Keyword- cost)
-Taxation(Keyword- tax)
-Advanced Accounting(Keyword- advacc)
-Auditing and Assurance(Keyword- audit)
-Enterprise Information Systems & Strategic Management(Keyword- eis)
-Financial Management & Economics for Finance(Keyword- fm)
-
-<b>Available Years</b>
-2018(Keyword- 2018)
-2019(Keyword- 2019)
-2020(Keyword- 2020)
-2021(Keyword- 2021)
-IPCC Old Syllabus Papers 2013-2018(Keyword - old)
-
-<b>Available Examination</b>
-May Attempt(Keyword-may)
-November Attempt(Keyword-nov)
-
-
-You can combine these keywords as per your wish in proper syntax. That is <code>file|subject|year|exam</code>  
-For example to get <i>"Accouting RTP MAY 2019"</i>, You have to use <code>/pdf rtpacc2019may</code>
-Now to get all RTP of accounting, You have to use <code>/pdf rtpacc</code>
-To get MTP of law for 2018 (Both attempt) - <code>/pdf mtplaw2018
-
-Tip- To get MTP of all subjects in Group 1 = <code>/pdf mtpgrp1
-
-
-Note: All the above are examples , Similarly you can combine keywords as you wish, like rtpgrp1, mtpgrp2, sagrp1, mtp, rtp, sa, rtpacc, mtpacc, salaw2021, etc..
-            
-"""
-)
+        await message.reply(
+            "😢Sorry I Cannot Match That.\nPlease Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+            quote=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                [
+                    InlineKeyboardButton("RTP", callback_data="rtp"),
+                    InlineKeyboardButton("MTP", callback_data="mtp")
+                ],
+                [
+                    InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
+                ]
+                ]
+            )
+            )
+        

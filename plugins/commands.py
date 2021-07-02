@@ -12,15 +12,14 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-
+import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 from msg import message_handler
-
-UPDATES_CHANNEL=-1001228162868
-DB_CHANNEL = -1001154905882
-HOME_TEXT = "<b>Helo, [{}](tg://user?id={})\n\nThis is a simple bot by [SUBIN](tg://user?id=626664225) written in Python to Search RTP, MTP, and SUGGESTED ANSWERS for CA Intermediate students.\n\nWith this bot you can get all Question papers released by ICAI(RTP, MTP, Suggested Answers.) from </b> <code>2013-2020</code>.\n<b>Use /help to Know How to use the bot.\n\nFeel Free to report any bug if found any or any missing Question Papers to my [Deleloper](tg://user?id=626664225)</b>"
+from ReplyKeyBoard import key_handler
+UPDATES_CHANNEL=int(os.environ.get("UPDATE_CHANNEL", ""))
+HOME_TEXT = "<b>Helo, [{}](tg://user?id={})\n\nThis is a simple bot by [SUBIN](tg://user?id=626664225) written in Python to Search RTP, MTP, and SUGGESTED ANSWERS for CA Intermediate students.\n\nWith this bot you can get all Question papers released by ICAI(RTP, MTP, Suggested Answers.) from</b> <code>2013-2020</code>.\n<b>Use /help to Know How to use the bot.\n\nFeel Free to report any bug if found any or any missing Question Papers to my [Deleloper](tg://user?id=626664225)</b>"
 HELP=""" You can ask any file by using <code>/pdf keyword </code>
 
 
@@ -68,7 +67,7 @@ Tip- To get MTP of all subjects in Group 1 = <code>/pdf mtpgrp1</code>
 Note: All the above are examples , Similarly you can combine keywords as you wish, like rtpgrp1, mtpgrp2, sagrp1, mtp, rtp, sa, rtpacc, mtpacc, salaw2021, etc..
             
 """
-store = -1001154905882
+int(os.environ.get("DB", ""))
 buttons=InlineKeyboardMarkup(
     [
         [
@@ -77,8 +76,8 @@ buttons=InlineKeyboardMarkup(
         ]
     ]
     )
-@Client.on_message(filters.command(["start", "start@InterHelperBot"]) & filters.private)
-async def start(client, cmd):
+@Client.on_message(filters.command(["start", "start@InterHelperBot"]))
+async def start(client, cmd): 
   await cmd.reply(
     HOME_TEXT.format(cmd.from_user.first_name, cmd.from_user.id),
     quote=True,
@@ -86,7 +85,7 @@ async def start(client, cmd):
     reply_markup=InlineKeyboardMarkup(
       [
         [
-          InlineKeyboardButton("How To Use", callback_data="help"),
+          InlineKeyboardButton("👨🏼‍🦯How To Use", callback_data="help"),
         ],
         [
           InlineKeyboardButton("🧩 Join My Update Channel", url="https://t.me/subin_works"),
@@ -98,10 +97,61 @@ async def start(client, cmd):
       ]
     )
   )
+  if cmd.chat.type == "private":
+    await key_handler(client, cmd, "mainmenu")
 
 @Client.on_message(filters.command(["pdf", "pdf@InterHelperBot"]))
 async def msg(client, cmd):
-  if UPDATES_CHANNEL:
+  nav=cmd.text
+  nav = nav.replace('/pdf', "")
+  if " " in nav:
+    try:
+      nav = nav.replace(' ', "")
+    except ValueError:
+      await cmd.reply(
+        text="😢Sorry I Cannot Match That.\nPlease Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
+        parse_mode="Markdown",
+        disable_web_page_preview=True,
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+              InlineKeyboardButton("RTP", callback_data="rtp"),
+              InlineKeyboardButton("MTP", callback_data="mtp")
+            ],
+            [
+              InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
+            ]
+          ]
+        )
+      )
+      return
+  if "/" in nav:
+    try:
+      nav = nav.replace('/', "")
+    except ValueError:
+      await cmd.reply(
+        text="😢Sorry I Cannot Match That.\nPlease Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
+        parse_mode="Markdown",
+        disable_web_page_preview=True,
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+              InlineKeyboardButton("RTP", callback_data="rtp"),
+              InlineKeyboardButton("MTP", callback_data="mtp")
+            ],
+            [
+              InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
+            ]
+          ]
+        )
+      )
+      return
+  nav = nav.lower().strip().rstrip()
+  await message_handler(client, cmd, nav)
+  
+  if cmd.chat.type != "supergroup":
     invite_link = "https://t.me/subin_works"
     try:
       user = await client.get_chat_member(int(UPDATES_CHANNEL), cmd.from_user.id)
@@ -115,7 +165,7 @@ async def msg(client, cmd):
         return
     except UserNotParticipant:
       await cmd.reply(
-        text="**Please Join My Updates Channel to use this Bot and to get the latest updates on my Projects.**\n\nOnly Channel Subscribers can acces the files saved in Database!",
+        text="**Please Consider Joining My Update Channel to get the latest updates on my Projects.**\n\nThat Count Of Subscribers are the only motivation for me to make similar bots.",
         reply_markup=InlineKeyboardMarkup(
           [
             [
@@ -135,33 +185,75 @@ async def msg(client, cmd):
         disable_web_page_preview=True
         )
       return
-  if " " in cmd.text:
-    try:
-      a, nav = cmd.text.split(' ')
-    except ValueError:
-      await cmd.reply_text("Please Use the proper syntax, Use /help to know how to use.")
-      return
-    await message_handler(client, cmd, nav)
-  else:
-    await cmd.reply(
-      "Tell Me What You Want",
-      parse_mode="Markdown",
-      disable_web_page_preview=True,
-      quote=True,
-      reply_markup=InlineKeyboardMarkup(
-        [
-          [
-            InlineKeyboardButton("RTP", callback_data="rtp"),
-            InlineKeyboardButton("MTP", callback_data="mtp")
-          ],
-          [
-            InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
-          ]
-        ]
-      )
-    )
+  
 
 
 @Client.on_message(filters.command(["help", "help@InterHelperBot"]))
 async def help(client, cmd):
   await cmd.reply_text(HELP, reply_markup=buttons)
+
+
+
+@Client.on_message(filters.text & filters.private & filters.incoming)
+async def mssssg(client, cmd):
+  nav=cmd.text
+  if "/" in nav:
+    try:
+      nav = nav.replace('/', "")
+    except ValueError:
+      await cmd.reply(
+        text="😢Sorry I Cannot Match That.\nPlease Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
+        parse_mode="Markdown",
+        disable_web_page_preview=True,
+        quote=True,
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+              InlineKeyboardButton("RTP", callback_data="rtp"),
+              InlineKeyboardButton("MTP", callback_data="mtp")
+            ],
+            [
+              InlineKeyboardButton("SUGGESTED ANSWERS", callback_data="sa"),
+            ]
+          ]
+        )
+      )
+      return
+  nav = nav.lower().strip().rstrip()
+  await key_handler(client, cmd, nav)
+  
+  if cmd.chat.type != "supergroup":
+    invite_link = "https://t.me/subin_works"
+    try:
+      user = await client.get_chat_member(int(UPDATES_CHANNEL), cmd.from_user.id)
+      if user.status == "kicked":
+        await cmd.reply(
+          text="Sorry Sir, You are Banned to use me.",
+          parse_mode="markdown",
+          quote=True,
+          disable_web_page_preview=True
+          )
+        return
+    except UserNotParticipant:
+      await cmd.reply(
+        text="**Please Consider Joining My Update Channel to get the latest updates on my Projects.**\n\nThat Count Of Subscribers are the only motivation for me to make similar bots.",
+        reply_markup=InlineKeyboardMarkup(
+          [
+            [
+              InlineKeyboardButton("🤖Join Updates Channel", url=invite_link)
+            ]
+          ]
+        ),
+        quote=True,
+        parse_mode="markdown"
+      )
+      return
+    except Exception:
+      await cmd.reply(
+        text="Something went Wrong.",
+        parse_mode="markdown",
+        quote=True,
+        disable_web_page_preview=True
+        )
+      return
+  

@@ -1580,7 +1580,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP Audit 2018 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv Audit)")
+                        KeyboardButton(text="↩️Back (RTP Audit)")
                     ] 
                     
                 ]
@@ -1599,7 +1599,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP Audit 2019 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv Audit)")
+                        KeyboardButton(text="↩️Back (RTP Audit)")
                     ] 
                     
                 ]
@@ -1618,7 +1618,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP Audit 2020 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv Audit)")
+                        KeyboardButton(text="↩️Back (RTP Audit)")
                     ] 
                     
                 ]
@@ -1637,7 +1637,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP Audit 2021 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv Audit)")
+                        KeyboardButton(text="↩️Back (RTP Audit)")
                     ] 
                     
                 ]
@@ -1657,7 +1657,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP EIS 2018 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv EIS)")
+                        KeyboardButton(text="↩️Back (RTP EIS)")
                     ] 
                     
                 ]
@@ -1676,7 +1676,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP EIS 2019 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv EIS)")
+                        KeyboardButton(text="↩️Back (RTP EIS)")
                     ] 
                     
                 ]
@@ -1695,7 +1695,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP EIS 2020 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv EIS)")
+                        KeyboardButton(text="↩️Back (RTP EIS)")
                     ] 
                     
                 ]
@@ -1714,7 +1714,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP EIS 2021 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv EIS)")
+                        KeyboardButton(text="↩️Back (RTP EIS)")
                     ] 
                     
                 ]
@@ -1735,7 +1735,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP FM 2018 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv FM)")
+                        KeyboardButton(text="↩️Back (RTP FM)")
                     ] 
                     
                 ]
@@ -1754,7 +1754,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP FM 2019 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv FM)")
+                        KeyboardButton(text="↩️Back (RTP FM)")
                     ] 
                     
                 ]
@@ -1773,7 +1773,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP FM 2020 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv FM)")
+                        KeyboardButton(text="↩️Back (RTP FM)")
                     ] 
                     
                 ]
@@ -1792,7 +1792,7 @@ async def key_handler(client, message, text):
                         KeyboardButton(text="RTP FM 2021 Nov"),
                     ],
                     [
-                        KeyboardButton(text="↩️Back (RTP Adv FM)")
+                        KeyboardButton(text="↩️Back (RTP FM)")
                     ] 
                     
                 ]

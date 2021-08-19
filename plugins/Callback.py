@@ -79,7 +79,7 @@ reply_markup=InlineKeyboardMarkup(
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.from_user.id != query.message.reply_to_message.from_user.id:
         await query.answer(
-            "നീയൊക്കെ ഒരു Professional Student ആണോ?😏.ഇത് നിനക്ക് വേണ്ടി അയച്ച Reply അല്ലല്ലോ!😐. പിന്നെന്തിനാ ഇതിൽ കേറി ഞെക്കിത്🤖\nനിനക്കൊക്കെ ഒന്ന് Professional ആയിക്കൂടെ😔",
+            f"ചീള് പിള്ളേർസ് സ്വന്തമായി Request ചെയ്യാൻ പഠിക്കണം😒. ഇത് {query.message.reply_to_message.from_user.first_name} -ക്ക് കൊടുത്ത Reply ആണ്. നിനക്കുള്ളതല്ല.🙊\nSent /pdf by own.",
             show_alert=True
             )
         return
@@ -2651,7 +2651,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=42)
     
     elif query.data =="rtpacc2021nov":
-        await client.send_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, text="Not Yet Released!!")
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=270)
 
 
 ## LAW
@@ -2678,7 +2678,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=103)
     
     elif query.data =="rtplaw2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=146)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=272)
 
 
 ##COST
@@ -2704,7 +2704,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=165)
     
     elif query.data =="rtpcost2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=273)
 
 ##TAX
     elif query.data =="rtptax2018may":
@@ -2729,7 +2729,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=189)
     
     elif query.data =="rtptax2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=276)
 
 #ADVANCED ACCOUNTING
     elif query.data =="rtpadvacc2018may":
@@ -2754,7 +2754,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=200)
     
     elif query.data =="rtpadvacc2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=274)
 
 ## AUDITING
 
@@ -2780,7 +2780,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=81)
     
     elif query.data =="rtpaudit2021nov":
-        await client.send_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, text="Not yet released!!")
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=271)
 
 ##EIS
     elif query.data =="rtpeis2018may":
@@ -2805,7 +2805,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=136)
     
     elif query.data =="rtpeis2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=275)
 
 
 #FM and ECO
@@ -2831,7 +2831,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=220)
     
     elif query.data =="rtpfm2021nov":
-        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=query.message.chat.id, reply_to_message_id=reply_id, reply_markup=reply_markup, from_chat_id=store, message_id=277)
     
 
 

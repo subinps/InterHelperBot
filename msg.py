@@ -2718,7 +2718,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=42)
     
     elif text =="rtpacc2021nov":
-        await client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, text="Not Yet Released!!")
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=270)
 
 
 ## LAW
@@ -2745,7 +2745,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=103)
     
     elif text =="rtplaw2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=146)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=272)
 
 
 ##COST
@@ -2771,7 +2771,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=165)
     
     elif text =="rtpcost2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=273)
 
 ##TAX
     elif text =="rtptax2018may":
@@ -2796,7 +2796,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=189)
     
     elif text =="rtptax2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=276)
 
 #ADVANCED ACCOUNTING
     elif text =="rtpadvacc2018may":
@@ -2821,7 +2821,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=200)
     
     elif text =="rtpadvacc2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=274)
 
 ## AUDITING
 
@@ -2847,7 +2847,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=81)
     
     elif text =="rtpaudit2021nov":
-        await client.send_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, text="Not yet released!!")
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=271)
 
 ##EIS
     elif text =="rtpeis2018may":
@@ -2872,7 +2872,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=136)
     
     elif text =="rtpeis2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=275)
 
 
 #FM and ECO
@@ -2898,7 +2898,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=220)
     
     elif text =="rtpfm2021nov":
-        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
+        await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=277)
     
 
 
@@ -3175,7 +3175,7 @@ async def message_handler(client, message, text):
         await client.copy_message(chat_id=message.chat.id, reply_to_message_id=message.message_id, reply_markup=reply_markup, from_chat_id=store, message_id=149)
     else:
         await message.reply(
-            "😢Sorry I Cannot Match That.\nPlease Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
+            "I Cannot Match That. Therefore Showing The Main Menu.\nFor Getting Specific Files Please Use Proper Syntax For Requesting Files\nUse /help To Know How To Use Proper KeyWords.\n\nTell Me What You Want",
             parse_mode="Markdown",
             disable_web_page_preview=True,
             quote=True,
